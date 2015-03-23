@@ -14,7 +14,16 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once __DIR__ . '/bootstrap.php';
+jimport('joomla.form.formfield');
 
-$list = ZtTabsHelperCommon::getData($params->get('tabs'));
-require_once JModuleHelper::getLayoutPath('mod_zt_tabs', $params->get('style', 'default'));
+require_once __DIR__ . '/../../helper/common.php';
+
+class JFormFieldTabs extends JFormField
+{
+
+    public function getInput()
+    {
+        return 'xxx';
+    }
+
+}

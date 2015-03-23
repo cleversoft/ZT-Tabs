@@ -147,12 +147,6 @@ class ZtTabsHelperCommon
         $this->parsedData['tab_maxItem'] = $this->config['tab_maxItem'];
     }
 
-    public function renderLayout()
-    {
-        //include necessary view
-        require(JModuleHelper::getLayoutPath('mod_zt_tabs'));
-    }
-
     //Get title module by id input
     public function getCategoryTileById($catId)
     {
@@ -350,6 +344,53 @@ class ZtTabsHelperCommon
         foreach ($modules as $module)
         {
             $list[$module->position][] = $module;
+        }
+        return $list;
+    }
+
+    public static function getModule($id)
+    {
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('*')
+                ->from('#__modules')
+                ->where($db->quoteName('published') . '=' . 1)
+                ->where($db->quoteName('id') . '=' . (int) $db);
+        $db->setQuery($query);
+        $module = $db->loadObject();
+        if ($module)
+        {
+            $module->params = new JRegistry($module->params);
+        }
+        return $module;
+    }
+
+    public static function getData($data)
+    {
+        if (is_string($data))
+        {
+            $data = json_decode($data);
+        }
+        $list = array();
+        foreach ($data as $item)
+        {
+            switch ($item->type)
+            {
+                case 'module':
+                    $module['data'] = self::getModule($item->value);
+                    $attribs['style'] = 'xhtml';
+                    $module['html'] = JModuleHelper::renderModule($module['data'], $attribs);
+                    $list[] = $module;
+                    break;
+                case 'categories':
+                    $extension = $item->extension;
+                    $className = 'ZtTabsHelper' . ucfirst($extension);
+                    if (class_exists($className))
+                    {
+                        $list[] = call_user_func_array(array($className, 'getData'), array($item));
+                    }
+                    break;
+            }
         }
         return $list;
     }

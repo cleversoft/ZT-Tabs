@@ -18,7 +18,7 @@ jimport('joomla.form.formfield');
 
 require_once __DIR__ . '/../../helper/common.php';
 
-class JFormFieldModules extends JFormField
+class JFormFieldJCategories extends JFormField
 {
 
     public function getInput()
