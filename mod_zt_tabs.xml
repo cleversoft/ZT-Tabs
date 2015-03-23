@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+    <name>MODULE_ZT_TABS</name>    
+    <!-- The following elements are optional and free of formatting constraints -->
+    <author>CleverSoft</author>
+    <creationDate>Feb 2015</creationDate>
+    <copyright>Copyright (c) 2008 - 2015 CleverSoft</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GPLv2 or later</license>
+    <authorEmail>hello@cleversoft.co</authorEmail>
+    <authorUrl>https://github.com/cleversoft</authorUrl>
+    <version>3.0.0</version>
+    <description>MODULE_ZT_TABS_DESCRIPTION</description>
+    
+    <files>        
+        <filename module="mod_zt_tabs">mod_zt_tabs.php</filename>        
+        <filename>mod_zt_tabs.xml</filename>
+        <filename>index.html</filename>
+        <filename>bootstrap.php</filename>
+        <folder>admin</folder>
+        <folder>assets</folder>        
+        <folder>helper</folder>
+        <folder>language</folder>
+        <folder>tmpl</folder>
+    </files>
+    
+    <languages>
+        <language tag="en-GB">language/en-GB.mod_zt_tabs.ini</language>
+        <language tag="en-GB">language/en-GB.mod_zt_tabs.sys.ini</language>
+    </languages>
+    
+    <config addfieldpath="modules/mod_zt_tabs/admin/formfields/">
+        <fields name="params">
+
+            <fieldset name="basic">
+                <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+                <field type="spacer" name="myspacer" label="&lt;b&gt;Tabs configurations&lt;/b&gt;" />
+                <field name="tab_style" default="" type="filelist" label="Style" description="Select zt tab style" directory="modules/mod_zt_tabs/tmpl/styles" />
+                <field name="title_position" default="top" type="list" label="Select position title" description="Select position title">
+                    <option value="top">Top position</option>
+                    <option value="bot">Bottom position</option>
+                    <option value="left">Left position</option>
+                    <option value="right">Right position</option>
+                </field>
+                <field name="tab_alignment" default="top" type="list" label="Select tab alignment" description="Select tab alignment(only for position top/bottom)">
+                    <option value="zt-left">Left</option>
+                    <option value="zt-right">Right</option>
+                    <option value="zt-center">Center</option>
+                </field>
+                <field name="effect_type" default="scroll_tb" type="list" label="Select Effect" description="Select Effect">
+                    <option value="move">Move</option>
+                    <option value="fade">Fade</option>
+                </field>
+                <field name="tab_title_height" type="text" default="auto" label="Tabs title Height:" description="Enter the Tabs title Height of tab module" />
+                <field name="tab_title_width" type="text" default="auto" label="Tabs title Width:" description="Enter the Tabs title Width of tab module" />
+                <field name="show_intro_image" type="list" default="display" label="Image intro display" description="Image intro display(Only for category)">
+                    <option value="display">Display</option>
+                    <option value="hide">Hide</option>
+                </field>
+                <field name="intro_image_width" type="text" label="Intro Image Width" default="100" description="" />
+                <field name="intro_image_height" type="text" label="Intro Image Height" default="100" description="Auto change follow width" />
+                
+                <field name="tabs_max_items" type="text" default="5" label="Max number tabs" description="The number of tabs to display(default 5)" />
+            </fieldset>
+            <!-- Modules -->
+            <fieldset name="modules">
+                <field name="modules" type="modules" default="" label="Select modules" description=""/>
+                <field name="selected_modules" type="text" default="" label="Selected modules" description=""/>
+            </fieldset>
+            <!-- Com content -->
+            <fieldset name="MOD_ZT_TABS_CONTENT_SETTING">                
+                <field name="content_ordering" type="list" default="default" label="Items Ordering" description="Ordering options">
+                    <option value="default">Default</option>
+                    <option value="c_dsc">Recently Added First</option>
+                    <option value="m_dsc">Recently Modified First</option>
+                </field>
+                <field name="content_intro_length" type="text" default="200" label="Introtext length" description="Introtext length" />
+            </fieldset>
+
+         
+        </fields>
+    </config>
+</extension>
