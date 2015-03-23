@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="2.5" client="site" method="upgrade">
-    <name>MODUDLE_ZT_TABS</name>
-    <name>COM_ZTLAYERSLIDER</name>
+    <name>MODULE_ZT_TABS</name>    
     <!-- The following elements are optional and free of formatting constraints -->
     <author>CleverSoft</author>
     <creationDate>Feb 2015</creationDate>
@@ -9,8 +8,8 @@
     <license>http://www.gnu.org/licenses/gpl-2.0.html GPLv2 or later</license>
     <authorEmail>hello@cleversoft.co</authorEmail>
     <authorUrl>https://github.com/cleversoft</authorUrl>
-    <version>2.5.1</version>
-    <description>MODUDLE_ZT_TABS_DESCRIPTION</description>
+    <version>3.0.0</version>
+    <description>MODULE_ZT_TABS_DESCRIPTION</description>
     
     <files>        
         <filename module="mod_zt_tabs">mod_zt_tabs.php</filename>        
